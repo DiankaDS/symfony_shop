@@ -64,12 +64,12 @@ class Users implements UserInterface, \Serializable
     private $role;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photo;
 
     /**
-     * @ORM\Column(name="card_number", type="string", length=255)
+     * @ORM\Column(name="card_number", type="string", length=255, nullable=true)
      */
     private $card;
 

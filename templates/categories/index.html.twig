@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row" id="myBooks">
+        {% for category in categories %}
+        <div class="col-md-4">
+            <div class="row" id="box">
+                <a href="#">
+                <div class="thumbnail text-center" style="position: relative; opacity: 0.7; height: 200px">
+                    {#<img src="http://ic.pics.livejournal.com/dementievskiy1/77831225/13453/13453_original.jpg" alt="" class="img-responsive">#}
+                    <img src="categories/{{ category.photo }}" alt="" class="img-responsive" style="height: 200px">
+                    <div class="caption" style="position: absolute; top: 35%; left: 0; width: 100%; color: chartreuse;">
+                        <h3>{{ category.name }}</h3>
+                    </div>
+
+                </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
