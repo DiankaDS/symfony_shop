@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Auth;
 
 use App\Form\UserForm;
 use App\Entity\Users;
