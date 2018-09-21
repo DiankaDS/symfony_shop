@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ category.name }}</div>
+        <div class="panel-body" align="center">
+
+            <table class="table" id="details">
+                <tbody>
+                <tr>
+                    <th>Photo</th>
+                    <td><img src="/categories/{{ category.photo }}" height="200" width="250"></td>
+                </tr>
+                <tr>
+                    <th>Subcategories</th>
+                    <td>
+                    {% for subcategory in subcategories %}
+                        {{ subcategory.name }} <br>
+                    {% endfor %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
