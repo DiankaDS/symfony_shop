@@ -13,9 +13,8 @@ class CategoriesController extends AbstractController
      */
     public function index()
     {
-//        return $this->render('categories/index.html.twig', [
-//            'controller_name' => 'CategoriesController',
-//        ]);
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $categories = $this->getDoctrine()
             ->getRepository(Categories::class)
             ->findAll();
