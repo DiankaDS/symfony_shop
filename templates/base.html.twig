@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>{% block title %}ShopMaster!{% endblock %}</title>
     {% block stylesheets %}
+        <script src="/js/app.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" href="{{ asset('css/categories.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -35,6 +39,7 @@
         </nav>
     </div>
 
+    {% block body %}
     <div class="col-md-2" id="sidebar">
         {% block sidebar %}
             <ul class="nav nav-list">
@@ -45,8 +50,9 @@
     </div>
 
     <div class="col-md-10" id="content">
-        {% block body %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
+    {% endblock %}
 </div>
 </body>
 </html>
