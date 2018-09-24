@@ -27,7 +27,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
-                        <li><a href="#">{{ app.user.username }}</a></li>
+                        <li><a href="{{ path('profile') }}">{{ app.user.username }}</a></li>
                         <li><a href="{{ path('security_logout') }}">Logout</a></li>
                     {% else %}
                         <li><a href="{{ path('security_login') }}">Sign in</a></li>
@@ -43,8 +43,16 @@
     <div class="col-md-2" id="sidebar">
         {% block sidebar %}
             <ul class="nav nav-list">
-                <li><a href="{{ path('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="/"><span class="glyphicon glyphicon-asterisk"></span> Some Links</a></li>
+                {#<li><a href="{{ path('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>#}
+                {#<li><a href="/"><span class="glyphicon glyphicon-asterisk"></span> Some Links</a></li>#}
+
+                <li><a href="/"><span class="glyphicon glyphicon-shopping-cart"></span> My basket</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-briefcase"></span> My orders</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-book"></span> Guest book</a></li>
+                <hr />
+                <li><a href="/"><span class="glyphicon glyphicon-bell"></span> Promotions</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-gift"></span> Gifts</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-fire"></span> Auction</a></li>
             </ul>
         {% endblock %}
     </div>
