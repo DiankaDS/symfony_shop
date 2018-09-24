@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert" align="center">
+        <h3>Attention! You are about to delete your account. Are you sure you want to do this?</h3>
+    </div>
+    <div align="center">
+        <form action="{{ path('delete_user') }}" method="post">
+            <button type="submit" class="btn btn-danger">Yes, delete it</button>
+            <a href="{{ path('profile') }}"><button type="button" class="btn btn-info">No, back</button></a>
+        </form>
+    </div>
+{% endblock %}

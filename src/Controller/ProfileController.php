@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EditUserForm;
+use App\Form\UploadPhotoForm;
+
+//use Symfony\Component\Config\Loader\FileLoader;
 
 class ProfileController extends AbstractController
 {
@@ -48,4 +51,37 @@ class ProfileController extends AbstractController
         );
     }
 
+    /**
+     * @Route("/delete_user", name="delete_user")
+     */
+    public function delete_user(Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        if($request->isMethod('POST')) {
+            //var_dump($request);
+            $user = $this->getUser();
+
+            $user->setDeleted(1);
+
+            $date = new \DateTime('@'.strtotime('now'));
+            $user->setUpdated($date);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('security_logout');
+        }
+
+        return $this->render('profile/delete.html.twig');
+    }
+
+    /**
+     * @Route("/upload_photo", name="upload_photo")
+     */
+    public function upload_photo(Request $request)
+    {
+
+    }
 }
