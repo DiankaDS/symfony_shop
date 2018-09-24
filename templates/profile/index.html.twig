@@ -42,10 +42,10 @@
 
 <div class="col-md-4">
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-success">Upload photo</a>
+        <a href="{{ path('upload_photo') }}" class="list-group-item list-group-item-success">Upload photo</a>
         <a href="{{ path('edit_profile') }}" class="list-group-item list-group-item-info">Edit profile</a>
         <a href="{{ path('reset_password') }}" class="list-group-item list-group-item-warning">Reset password</a>
-        <a href="#" class="list-group-item list-group-item-danger">Delete profile</a>
+        <a href="{{ path('delete_user') }}" class="list-group-item list-group-item-danger">Delete profile</a>
     </div>
 </div>
 {% endblock %}
