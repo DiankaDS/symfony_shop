@@ -9,7 +9,22 @@
 
         {% elseif is_granted('ROLE_ADMIN') %}
             <h4>Great to see you, {{ app.user.name }}! You are logged as admin!</h4>
+
         {% endif %}
+
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+            <ul class="pagination">
+                <li><a href="/"><span class="glyphicon glyphicon-shopping-cart"></span> My basket</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-briefcase"></span> My orders</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-book"></span> Guest book</a></li>
+                <hr />
+                <li><a href="/"><span class="glyphicon glyphicon-bell"></span> Promotions</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-gift"></span> Gifts</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-fire"></span> Auction</a></li>
+            </ul>
+        {% endif %}
+
+        <hr />
 
         <h3>About us:</h3>
     </div>
