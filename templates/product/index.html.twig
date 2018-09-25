@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block sidebar %}
+    <ul class="nav nav-list">
+        {% for category in categories %}
+            <li>
+                <a data-toggle="collapse" href="#collapse{{ category.id }}"><span class="caret"></span> {{ category.name }}</a>
+
+                <ul class="panel-collapse collapse" id="collapse{{ category.id }}">
+                    {% for subcategory in subcategories[category.id] %}
+                        <li><a href="/categories/{{ category.id }}"> {{ subcategory.name }} </a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+    {% for product in products %}
+        <div class="panel panel-default">
+            <div class="panel-heading" id="review">
+                <strong><a href="#">{{ product.name }}</a> <span class="glyphicon glyphicon-star"></span> ${{ product.price }}</strong>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-3">
+                    {% if product.photo %}
+                        <img src="{{ product.photo }}" height="150" width="150">
+                    {% else %}
+                        <img src="/default/default_user.png" height="150" width="150">
+                    {% endif %}
+                </div>
+
+                <div class="col-md-9">
+                    <h4>{{ product.name }}</h4>
+                    <p>{{ product.description }}</p>
+                    <p>${{ product.price }}</p>
+
+                    <span class="label label-primary">category</span>
+                    <span class="label label-primary">subcategory</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

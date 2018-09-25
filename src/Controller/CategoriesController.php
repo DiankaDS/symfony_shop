@@ -20,20 +20,10 @@ class CategoriesController extends AbstractController
             ->getRepository(Categories::class)
             ->findAll();
 
-        $subcategories = [];
-        foreach($categories as $c) {
-            $subcategories[$c->getId()] = $this->getDoctrine()
-                ->getRepository(Subcategories::class)
-                ->getSubcategoriesByCategory($c->getId());
-
-        }
-
         return $this->render('categories/index.html.twig', [
             'categories' => $categories,
-            'subcategories' => $subcategories
         ]);
     }
-
 
     /**
      * @Route("/categories/{id}", name="categories_by_id")
